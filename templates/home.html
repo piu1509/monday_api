@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+	Home
+{% endblock title %}
+{% block content %}
+	<div class="container my-5 text-center">
+		{% if user.is_authenticated %}
+			<h3>Welcome {{user.first_name}}</h3>
+			<a href="{% url 'api:logout' %}" class="btn btn-danger my-4 fw-bold">Logout</a>
+		{% else %}
+			<a href="https://auth.monday.com/oauth2/authorize?client_id=726fa380a2e062c4d31b3b6c2a915ef6" class="btn btn-primary fw-bold">Login with Monday</a>
+		{% endif %}
+	</div>
+{% endblock %}

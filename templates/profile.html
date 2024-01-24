@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}
+Profile
+{% endblock title %}
+{% block content %}
+<div class="container my-5">
+	<div class="row d-flex justify-content-center ">
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 bg-light shadow text-center">
+			<img src="{% if user.data.me.photo_original %}{{user.data.me.photo_original.url}}{% endif %}" class="rounded-circle">
+			<h2>{{user.data.me.name}}</h2>
+			<h5>Email: {{user.data.me.email}}</h5>
+			<h6>Phone:{% if not user.data.me.phone %}None{% else %} {{user.data.me.phone}}{% endif %}</h6>
+			<h6>Location: {{user.data.me.location}}</h6>
+			<h6>Account Id: {{user.account_id}}</h6>
+			<h6>Id: {{user.data.me.id}}</h6>
+			<h6>Is admin: {{user.data.me.is_admin}}</h6>
+			<h6>Is guest: {{user.data.me.is_guest}}</h6>
+		</div>
+	</div>
+</div>
+{% endblock %}

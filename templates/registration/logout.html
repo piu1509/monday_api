@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}
+	Logout
+{% endblock title %}
+{% block content %}
+	<div class="container my-5 text-center">
+		<h5>You have successfully logged out..</h5>
+		<h6 class="my-2">Want to login again?</h6>
+		<a href="https://auth.monday.com/oauth2/authorize?client_id=726fa380a2e062c4d31b3b6c2a915ef6" class="btn btn-primary fw-bold mt-4">Login with Monday</a>
+	</div>
+{% endblock %}

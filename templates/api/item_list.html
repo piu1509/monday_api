@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}
+	Item list
+{% endblock title %}
+{% block content %}
+	<div class="container my-5">
+		<div class="row d-flex justify-content-center">
+			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 text-center">
+				<h5>Account id: {{list.account_id}}</h5>
+				{% for board in list.data.boards %}
+					<h4 class="my-2 fw-bold">Board name: {{board.name}}</h4>
+					<h5>Board Id: {{board.id}}</h5>
+					<h5 class="my-2">Board description: {{board.description}}</h5>
+					<h5>Board items:</h5>
+					{% for item in board.items %}
+						<h6 class="fw-bold"> Name: {{item.name}}</h6>
+						<h6>Id: {{item.id}}</h6>
+						<div class="row d-flex mt-3 border shadow p-3">
+							<h6 class="mb-3 fw-bold"> Column values: </h6>
+							{% for value in item.column_values %}
+								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+									<h6> Title: {{value.title}}</h6>
+									<h6> Id: {{value.type}}</h6>
+									<h6> Type: {{value.id}}</h6>
+									<h6> Text: {{value.text}}</h6>
+									<br>
+								</div>
+							{% endfor %}
+							<div>
+								<a href="{% url 'api:update_item' id=item.id %}" class="btn btn-success fw-bold">Update</a>
+								<a href="{% url 'api:delete_item' id=item.id %}" class="btn btn-danger fw-bold">Delete</a>
+							</div>
+						</div>
+						<br>
+					{% endfor %}
+					<br>
+				{% endfor %}
+			</div>
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+				<div class="float-end ">
+					<a href="{% url 'api:item_create' %}" class="btn btn-primary fw-bold">Create new item</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
